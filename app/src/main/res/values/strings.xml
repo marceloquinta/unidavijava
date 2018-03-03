@@ -7,4 +7,8 @@
     <string name="hint_password">Senha</string>
     <string name="button_enter">Entrar</string>
     <string name="button_forgot">Esqueci minha senha</string>
+    <string name="error_connection">Você não tem conexão com a internet</string>
+    <string name="error_request">Você não tem permissão para acessar este serviço</string>
+    <string name="label_error_invalid_response">Resposta do servidor é inválida</string>
+    <string name="message_wait">Aguarde</string>
 </resources>
