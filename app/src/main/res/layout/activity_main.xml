@@ -7,11 +7,10 @@
     android:padding="8dp">
 
     <ImageView
-        android:id="@+id/serjao"
+        android:id="@+id/img_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
-        android:src="@drawable/matador"
         android:layout_marginTop="10dp"/>
 
     <TextView
@@ -23,7 +22,7 @@
         android:textColor="@color/gray"
         android:textStyle="bold"
         android:background="@android:color/white"
-        android:layout_below="@id/serjao"
+        android:layout_below="@id/img_profile"
         android:padding="8dp"/>
 
     <TextView

@@ -1,12 +1,15 @@
 package br.edu.unidavi.unidavijava.features.home;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import br.edu.unidavi.unidavijava.R;
-import br.edu.unidavi.unidavijava.features.login.LoginActivity;
+import br.edu.unidavi.unidavijava.data.Session;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,13 +19,17 @@ public class MainActivity extends AppCompatActivity {
         Log.d("LIFECYCLE", "CREATE");
         setContentView(R.layout.activity_main);
 
-        String username =
-                getIntent().getStringExtra(
-                        LoginActivity.FIELD_USERNAME);
+        Session mySession = new Session();
+        String username = mySession.getEmailInSession(getApplicationContext());
 
         TextView textViewUsername = findViewById(R.id.label_name);
         textViewUsername.setText(username);
 
+        String url = "https://www.infoescola.com/wp-content/uploads/2008/05/onca-pintada.jpg";
+        ImageView myImageView = findViewById(R.id.img_profile);
+        Picasso.with(this).load(url)
+                .placeholder(R.drawable.matador)
+                .into(myImageView);
     }
 
     @Override
