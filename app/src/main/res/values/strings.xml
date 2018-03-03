@@ -11,4 +11,5 @@
     <string name="error_request">Você não tem permissão para acessar este serviço</string>
     <string name="label_error_invalid_response">Resposta do servidor é inválida</string>
     <string name="message_wait">Aguarde</string>
+    <string name="error_empty">Não há memes. Vá ler um livro.</string>
 </resources>

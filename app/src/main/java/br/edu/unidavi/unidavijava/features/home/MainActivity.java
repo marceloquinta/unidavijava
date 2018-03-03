@@ -3,11 +3,15 @@ package br.edu.unidavi.unidavijava.features.home;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.unidavi.unidavijava.R;
@@ -17,11 +21,22 @@ import br.edu.unidavi.unidavijava.web.WebTaskMemes;
 
 public class MainActivity extends AppCompatActivity {
 
+    private RecyclerView recyclerView;
+    private MemeAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("LIFECYCLE", "CREATE");
         setContentView(R.layout.activity_main);
+
+        recyclerView = findViewById(R.id.recycler_memes);
+        recyclerView.setLayoutManager(
+                new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+
+        adapter = new MemeAdapter(new ArrayList<Meme>(),this);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
@@ -69,8 +84,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Subscribe
     public void onEvent(List<Meme> memeList){
-        Log.d("DEBUG", memeList.size() +
-                " memes existentes");
+
+        if(memeList.size() == 0){
+            findViewById(R.id.container_empty).setVisibility(View.VISIBLE);
+            findViewById(R.id.recycler_memes).setVisibility(View.GONE);
+        }else{
+            findViewById(R.id.recycler_memes).setVisibility(View.VISIBLE);
+            findViewById(R.id.container_empty).setVisibility(View.GONE);
+            adapter.memeList = memeList;
+            adapter.notifyDataSetChanged();
+        }
+
     }
 
     @Subscribe
