@@ -70,4 +70,12 @@ public class MemeAdapter extends RecyclerView.Adapter<MemeViewHolder> {
     public int getItemCount() {
         return memeList.size();
     }
+
+    public List<Meme> getMemeList() {
+        return memeList;
+    }
+
+    public void setMemeList(List<Meme> memeList) {
+        this.memeList = memeList;
+    }
 }
